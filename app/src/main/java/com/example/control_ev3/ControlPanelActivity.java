@@ -26,6 +26,7 @@ public class ControlPanelActivity extends AppCompatActivity {
     //Création de la vue de la vitesse
     SpeedView Speedometer ;
     //Initialisation de la vitesse de départ à 0
+    //Distinction de la vitesse pour avancer et de la vitesse pour reculer
     int vitesseAvancer = 0;
     int vitesseReculer = 0;
 
