@@ -9,6 +9,14 @@
         tools:showIn="@layout/content_main"
         tools:context=".ControlPanelActivity">
     <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <Button
+                android:text="Eteindre Robot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/bEteindre"
+                android:layout_marginTop="0dp"
+                android:layout_marginLeft="50dp"
+        />
         <TextView
                 android:text="Gestion des mouvements du robot :"
                 android:layout_width="wrap_content"

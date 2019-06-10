@@ -21,6 +21,7 @@ public class ControlPanelActivity extends AppCompatActivity {
     Button BAccelerer ;
     Button BRalentir ;
     Button BArreter;
+    Button BEteindre;
     ImageButton BGauche ;
     ImageButton BDroite ;
     //Création de la vue de la vitesse
@@ -43,6 +44,7 @@ public class ControlPanelActivity extends AppCompatActivity {
         BArreter = (Button) findViewById(R.id.bArreter);
         BGauche = (ImageButton) findViewById(R.id.bGauche);
         BDroite = (ImageButton) findViewById(R.id.bDroite);
+        BEteindre = (Button) findViewById(R.id.bEteindre);
         Speedometer = (SpeedView) findViewById(R.id.speedView);
 
 
@@ -185,6 +187,19 @@ public class ControlPanelActivity extends AppCompatActivity {
             }
         });
 
+
+        BEteindre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    BluetoothConnexion.envoyerMessage((byte) 7);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
     }
 
