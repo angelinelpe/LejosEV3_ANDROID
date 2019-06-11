@@ -5,7 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatSeekBar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
+import android.widget.Switch;
 import com.github.anastr.speedviewlib.SpeedView;
 import com.github.anastr.speedviewlib.Speedometer;
 import com.goodiebag.protractorview.ProtractorView;
@@ -24,6 +26,7 @@ public class ControlPanelActivity extends AppCompatActivity {
     Button BEteindre;
     ImageButton BGauche ;
     ImageButton BDroite ;
+    Switch modeAuto;
     //Création de la vue de la vitesse
     SpeedView Speedometer ;
     //Initialisation de la vitesse de départ à 0
@@ -46,6 +49,7 @@ public class ControlPanelActivity extends AppCompatActivity {
         BDroite = (ImageButton) findViewById(R.id.bDroite);
         BEteindre = (Button) findViewById(R.id.bEteindre);
         Speedometer = (SpeedView) findViewById(R.id.speedView);
+        modeAuto = (Switch) findViewById(R.id.modeAuto);
 
 
         //Création de la connexion Bluetooth
@@ -200,6 +204,30 @@ public class ControlPanelActivity extends AppCompatActivity {
                 }
             }
         });
+
+        modeAuto.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked) {
+                    try {
+                        BluetoothConnexion.envoyerMessage((byte) 8);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    try {
+                        BluetoothConnexion.envoyerMessage((byte) 6);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+
 
     }
 
